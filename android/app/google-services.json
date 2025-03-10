@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "341496228197",
+    "project_id": "eritemfinder",
+    "storage_bucket": "eritemfinder.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341496228197:android:18628db45d344a733ed98c",
+        "android_client_info": {
+          "package_name": "com.awesomeproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3wbI-3Xdy14-cacq2FBKtULzZmhsasI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
