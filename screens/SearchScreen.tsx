@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, FlatList, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, TextInput, Button, FlatList, Text, StyleSheet, TouchableOpacity, SafeAreaView, ImageBackground } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList, Item } from '../types.ts';
+import { Image } from 'react-native-reanimated/lib/typescript/Animated';
+
+const backgroundImage = require('../assets/er_logo.png');
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Search'>;
 
@@ -50,6 +53,7 @@ const SearchScreen: React.FC<Props> = ({ navigation }) => {
   );
 
   return (
+    <ImageBackground source={backgroundImage} style={styles.background} resizeMode="cover">
     <SafeAreaView style={styles.container}>
       <TextInput
         style={styles.input}
@@ -74,13 +78,20 @@ const SearchScreen: React.FC<Props> = ({ navigation }) => {
         keyExtractor={(item) => item.id}
       />
     </SafeAreaView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: 'rgba(255, 253, 253, 0.3)', 
   },
   input: {
     height: 40,
