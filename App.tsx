@@ -15,7 +15,9 @@ import { View, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 import SearchScreen from './screens/SearchScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import MapScreen from './screens/MapScreen';
+import FavoritesScreen from './screens/FavoritesScreen';
 import Background from './Background';
+import { FavoritesProvider } from './context/FavoritesContext';
 import { RootStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -28,20 +30,29 @@ const SearchStack = () => (
   </Stack.Navigator>
 );
 
+const FavoritesStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Favorites" component={FavoritesScreen} />
+    <Stack.Screen name="Details" component={DetailsScreen} />
+  </Stack.Navigator>
+);
 
 
 const App = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
-        <Background>
-          <NavigationContainer>
-            <Tab.Navigator screenOptions={{ headerShown: false }}>
-              <Tab.Screen name="Search" component={SearchStack} />
-              <Tab.Screen name="Map" component={MapScreen} />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </Background>
+        <FavoritesProvider>
+          <Background>
+            <NavigationContainer>
+              <Tab.Navigator screenOptions={{ headerShown: false }}>
+                <Tab.Screen name="Search" component={SearchStack} />
+                <Tab.Screen name="Map" component={MapScreen} />
+                <Tab.Screen name="Favorites" component={FavoritesStack} />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </Background>
+        </FavoritesProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );
