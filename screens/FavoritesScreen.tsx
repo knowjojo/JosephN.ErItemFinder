@@ -59,14 +59,14 @@ const FavoritesScreen: React.FC<Props> = ({ navigation }) => {
     container: {
       flex: 1,
       padding: 16,
-      backgroundColor: 'rgba(255, 253, 253, 0.3)',
+      backgroundColor: 'rgba(16, 15, 15, 0.54)',
     },
     title: {
       fontSize: 24,
       fontWeight: 'bold',
       marginBottom: 16,
       textAlign: 'center',
-      color: '#333',
+      color: '#e2c792',
     },
     itemContainer: {
       flexDirection: 'row',
@@ -97,8 +97,8 @@ const FavoritesScreen: React.FC<Props> = ({ navigation }) => {
       alignItems: 'center',
     },
     emptyText: {
-      fontSize: 18,
-      color: '#666',
+      fontSize: 25,
+      color: '#e2c792',
     },
   });
   

@@ -4,6 +4,12 @@ export type AttackPower = {
   };
   
   export type Item = {
+    resistance: boolean;
+    dmgNegation: boolean;
+    cost: any;
+    requires: any;
+    effects: any;
+    slots: any;
     id: string;
     name: string;
     image: string;
@@ -16,6 +22,7 @@ export type AttackPower = {
     requiredAttributes?: any;
     effect?: string;
     type?: string;
+    fpCost?: number;
   };
   
   export type RootStackParamList = {
