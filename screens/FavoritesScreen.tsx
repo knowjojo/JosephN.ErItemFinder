@@ -12,7 +12,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Favorites'>;
 
 const FavoritesScreen: React.FC<Props> = ({ navigation }) => {
     const { favorites, removeFavorite } = useFavorites();
-  
+
     const renderItem = ({ item }: { item: Item }) => (
       <View style={styles.itemContainer}>
         <TouchableOpacity 
@@ -101,5 +101,5 @@ const FavoritesScreen: React.FC<Props> = ({ navigation }) => {
       color: '#e2c792',
     },
   });
-  
+
   export default FavoritesScreen;

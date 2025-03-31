@@ -24,17 +24,41 @@ const DetailsScreen: React.FC<Props> = ({ route, navigation }) => {
     }
   };
 
-  // Determine the item type
   const getItemType = () => {
-    if (item.type?.toLowerCase().includes('sorcery') || item.type?.toLowerCase().includes('incantation')) {
+    const type = item.type?.toLowerCase() || '';
+    
+    // Check if it's a spell
+    if (type.includes('sorcery') || type.includes('sorceries') || type.includes('incantation')) {
       return 'spell';
-    } else if (item.category || item.attack) {
-      return 'weapon';
-    } else if (item.type?.toLowerCase().includes('armor')) {
-      return 'armor';
-    } else {
-      return 'item';
     }
+    
+    // Check if it's armor - improved to catch all armor types
+    if (
+      type.includes('armor') || 
+      type.includes('gauntlets') || 
+      type.includes('chest') || 
+      type.includes('helm') || 
+      type.includes('leg') ||
+      type.includes('set')
+    ) {
+      return 'armor';
+    }
+    
+    // Check if it has armor-specific properties
+    if (
+      Array.isArray(item.dmgNegation) || 
+      Array.isArray(item.resistance)
+    ) {
+      return 'armor';
+    }
+    
+    // Check if it's a weapon
+    if (item.category) {
+      return 'weapon';
+    }
+    
+    // Default to generic item
+    return 'item';
   };
 
   const itemType = getItemType();
@@ -228,7 +252,7 @@ const DetailsScreen: React.FC<Props> = ({ route, navigation }) => {
       case 'spell':
         return 'magic-staff';
       case 'armor':
-        return 'shield-alt';
+        return 'shield';
       default:
         return 'flask';
     }

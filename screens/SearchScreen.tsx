@@ -32,10 +32,10 @@ type CategoryOption = {
 const CATEGORIES: CategoryOption[] = [
   { label: 'Weapons', value: 'weapons', endpoint: 'weapons' },
   { label: 'Items', value: 'items', endpoint: 'items' },
-  { label: 'Ammos', value: 'ammos', endpoint: 'ammos' },
+  { label: 'Ammo Types', value: 'ammos', endpoint: 'ammos' },
   { label: 'Armors', value: 'armors', endpoint: 'armors' },
   { label: 'Talismans', value: 'talismans', endpoint: 'talismans' },
-  { label: 'Spells', value: 'spells', endpoint: 'sorceries' },
+  { label: 'Sorceries', value: 'sorceries', endpoint: 'sorceries' },
   { label: 'Incantations', value: 'incantations', endpoint: 'incantations' },
 ];
 
@@ -82,8 +82,15 @@ const SearchScreen: React.FC<Props> = ({ navigation }) => {
         <FontAwesome name="chevron-right" size={16} color="#666" style={styles.chevron} />
       </View>
     </TouchableOpacity>
+
+  
+
   );
 
+  useEffect(() => {
+    setResults([]); // Clear search results when the category changes
+    setQuery('');   // clear the search query as well
+  }, [category]);
   
 
   return (
@@ -236,7 +243,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   picker: {
-    height: 50,
+    height: 55,
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
     marginBottom: 12,
     borderRadius: 8,
